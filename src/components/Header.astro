@@ -1,0 +1,215 @@
+---
+import BtnClose from "./BtnClose";
+import BtnOpen from "./BtnOpen";
+---
+
+<header class="flex justify-between items-center pt-8 w-5/6 animate">
+  <img
+    src="/Mineris-logo-blanco.png"
+    alt="Logo Mineris"
+    class="lg:w-[160px] w-28 md:w-32"
+  />
+
+  <nav class="flex gap-4 md:gap-6  lg:gap-10 items-center">
+    <div class="flex gap-1 items-center">
+      <!-- hacer que redirija a la pagina actual -->
+      <div
+        class="rounded-full w-8 h-8 flex items-center justify-center cursor-pointer"
+      >
+        <a class="opacity-50 hover:opacity-100 transition-all">ES</a>
+      </div>
+
+      <span>•</span>
+      <div
+        class="rounded-full w-8 h-8 flex items-center justify-center cursor-pointer"
+      >
+        <a class="opacity-50 hover:opacity-100 transition-all">EN</a>
+      </div>
+    </div>
+
+    <a>
+      <button
+        class="hidden md:block overflow-hidden w-32 p-2 h-10 bg-white text-black border-none rounded-2xl text-md font-medium cursor-pointer relative z-10 group"
+      >
+        Contactanos
+        <span
+          class="absolute w-36 h-32 -top-8 -left-2 bg-blue-200 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-bottom"
+        ></span>
+        <span
+          class="absolute w-36 h-32 -top-8 -left-2 bg-blue-400 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-bottom"
+        ></span>
+        <span
+          class="absolute w-36 h-32 -top-8 -left-2 bg-blue-600 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-1000 duration-500 origin-bottom"
+        ></span>
+        <span
+          class="group-hover:opacity-100 group-hover:duration-1000 text-white duration-100 opacity-0 absolute top-2 left-5 z-10"
+          >Contactanos</span
+        >
+      </button>
+    </a>
+
+    <BtnOpen client:load />
+  </nav>
+</header>
+
+<!-- Menu desplegable -->
+<div class="absolute desplegableOculto w-full h-full z-50" id="desplegable">
+  <div style="overflow: hidden;">
+    <svg
+      preserveAspectRatio="none"
+      viewBox="0 0 1200 120"
+      xmlns="http://www.w3.org/2000/svg"
+      style="fill: #ffffff; width: 248%; height: 127px; transform: rotate(180deg) scaleX(-1);"
+    >
+      <path d="M321.39 56.44c58-10.79 114.16-30.13 172-41.86 82.39-16.72 168.19-17.73 250.45-.39C823.78 31 906.67 72 985.66 92.83c70.05 18.48 146.53 26.09 214.34 3V0H0v27.35a600.21 600.21 0 00321.39 29.09z" />
+    </svg>
+  </div>
+  <div class="w-full h-full bg-white flex justify-center  items-center">
+    <div class="w-3/4 flex justify-center md:justify-between">
+      <BtnClose client:load />
+      <nav class="my-auto text-center md:text-start ocultarImgDesplegable" id="container-text-desplegable">
+        <span class="uppercase text-stone-800 text-md font-medium"
+          >Navegación</span
+        >
+        <ul class="text-stone-800 mt-6">
+          <li
+            class="py-4 text-4xl md:text-5xl font-medium hover:text-stone-600 cursor-pointer"
+          >
+            <a>Inicio</a>
+          </li>
+          <li
+            class="py-4 text-4xl md:text-5xl font-medium hover:text-stone-600 cursor-pointer"
+          >
+            <a>Nosotros</a>
+          </li>
+          <li
+            class="py-4 text-4xl md:text-5xl font-medium hover:text-stone-600 cursor-pointer"
+          >
+            <a>Servicios</a>
+          </li>
+          <li
+            class="py-4 text-4xl md:text-5xl font-medium hover:text-stone-600 cursor-pointer"
+          >
+            <a>Clientes</a>
+          </li>
+          <li
+            class="py-4 text-4xl md:text-5xl font-medium hover:text-stone-600 cursor-pointer"
+          >
+            <a>Contacto</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="hidden md:block my-auto container-img" id="container-img">
+        <img 
+          src="/encabezado-mineris-collage.webp" 
+          alt="img-collage"
+          class="md:w-[26rem] lg:w-[36rem]"
+        >
+      </div>
+    </div>
+  </div>
+  <div style="overflow: hidden;">
+    <svg
+      preserveAspectRatio="none"
+      viewBox="0 0 1200 120"
+      xmlns="http://www.w3.org/2000/svg"
+      style="fill: #ffffff; width: 248%; height: 127px; transform: scaleX(-1);"
+    >
+      <path d="M321.39 56.44c58-10.79 114.16-30.13 172-41.86 82.39-16.72 168.19-17.73 250.45-.39C823.78 31 906.67 72 985.66 92.83c70.05 18.48 146.53 26.09 214.34 3V0H0v27.35a600.21 600.21 0 00321.39 29.09z" />
+    </svg>
+  </div>
+</div>
+
+<style>
+  .animate {
+    animation: nav-load 1000ms;
+    animation-delay: 3s;
+  }
+
+  @keyframes nav-load {
+    0% {
+      transform: translateY(-100%);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  /* Cuando se toca el menu hamburgesa */
+
+  .desplegableOculto {
+    bottom: -100vh;
+    left: -100vw;
+  }
+
+  .desplegableVisible {
+    bottom: 12vh;
+    left: 0;
+    animation: mostrarDesplegable 1s ease-in-out forwards;
+  }
+
+  @keyframes mostrarDesplegable {
+    0% {
+      transform: translateY(100%);
+      transform: rotateX("100%");
+    }
+
+    100% {
+      transform: translateY(0%);
+      transform: translateX(0);
+      position: fixed;
+    }
+  }
+
+  .ocultarDesplegable{
+    bottom: 134vh;
+    left: 0;
+    animation: ocultarDesplegable 2s ease-in-out ;
+    
+  }
+
+  @keyframes ocultarDesplegable {
+    0% {
+      transform: translateY(120%);
+      transform: rotateX("0%");
+    }
+
+    20% {
+      transform: translateY(120%);
+      transform: rotateX("0%");
+    }
+
+    100% {
+      transform: translateY(0%);
+      transform: translateX(0);
+    }
+  }
+
+
+  /* Ocultar imgane cuando se cierra el desplegable */
+
+  .ocultarImgDesplegable{
+    opacity: 1;
+    animation: ocultarImgDesplegable 2s ease-in-out ;
+    
+  }
+
+  @keyframes ocultarImgDesplegable {
+    0% {
+      opacity: 1;
+    }
+
+    26% {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateY(-40%);
+    }
+  }
+
+</style>
